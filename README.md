@@ -30,7 +30,7 @@ Emulate Reddit forums in Discord!
     ![Example](https://i.imgur.com/6Geegb0.png)
   - Set `"name"` and `"redirect_uri"` to whatever you wish.
   - Click create.
-  - Change `"clientID"` under and `"clientSecret"` under `reddit` according to the picture.
+  - Change `"clientID"` and `"clientSecret"` under `reddit` according to the picture.
     ![Example](https://i.imgur.com/HL4S219.png)
 
 - Create a Discord bot, tutorial [here](https://discordpy.readthedocs.io/en/stable/discord.html)
