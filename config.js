@@ -23,9 +23,9 @@ module.exports = {
   },
 
   custom: {
-    //prettier-ignore
     //DO NOT TOUCH customMessage or DefaultNoDesc ///
     // i am too lazy to move it to index.js
+    //prettier-ignore
     customMessage:
       "`------------`\n## {{postTitle}}\n\n### {{postDescription}} \n\n`🔼` {{upvotes}} `|` [u/{{OP}}](<{{linkToOP}}>) `|` [Post](<{{permPostLink}}>)", //dont touch it
     defaultNoDesc: "", // don't touch it
