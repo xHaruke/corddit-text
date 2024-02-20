@@ -43,6 +43,10 @@ client.on("error", (err) => {
   console.error("Something Broke!", err);
 });
 
+setInterval(() => {
+  alreadyWorking = false;
+}, 69 * 60 * 1000);
+
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
@@ -157,7 +161,11 @@ async function createPosts(subreddit, channelID) {
     const postDescription =
       raw_desc.length >= 1700 ? raw_desc.slice(0, 1700) + "..." : raw_desc;
 
-    if (data[i].is_video) {
+    if (
+      data[i].is_video ||
+      (data[i].crosspost_parent_list &&
+        data[i].crosspost_parent_list[0]?.is_video)
+    ) {
       const permPostLink = `https://reddit.com${data[i].permalink}`;
       const permOP = `https://reddit.com/u/${OP}`;
 
@@ -172,7 +180,11 @@ async function createPosts(subreddit, channelID) {
         .replace(/{{linkToOP}}/g, permOP)
         .replace(/{{permPostLink}}/g, permPostLink);
 
-      message += ` \`|\` [Video](${data[i].secure_media?.reddit_video?.fallback_url})`;
+      if (data[i].crosspost_parent_list) {
+        message += ` \`|\` [Video](${data[i].crosspost_parent_list[0].secure_media?.reddit_video?.fallback_url})`;
+      } else {
+        message += ` \`|\` [Video](${data[i].secure_media?.reddit_video?.fallback_url})`;
+      }
 
       await channel.createMessage({ content: message });
 
