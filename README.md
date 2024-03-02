@@ -36,6 +36,8 @@ Emulate Reddit forums in Discord!
 - Create a Discord bot, tutorial [here](https://discordpy.readthedocs.io/en/stable/discord.html)
   - Change `"token"` to `Bot <your_token>`, example: `Bot O89gea98hgn`
   - Change `"guildID"` under `custom` to the ID of the server you want to use the bot in.
+ 
+- Remove `"[REPLACE_ME]" || ` in the config.js if you are going to be using env. e.g. `token: "Bot [REPLACE_ME]" || process.env.discord_token,` would be changed to `token: process.env.discord_token,` and in env you would put `token=Bot <your_token>`. 
 
 Done!
 
